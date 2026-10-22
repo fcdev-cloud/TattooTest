@@ -4,6 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// Add security headers to site. Prevent resource blocks
+function update_headless_security_headers() {
+    header('Cross-Origin-Embedder-Policy: unsafe-none', true);
+    header('Cross-Origin-Resource-Policy: cross-origin', true);
+}
+
+add_action('send_headers', 'update_headless_security_headers', 10);
+
 // Disable block editor
 add_filter( 'use_block_editor_for_post', '__return_false', 100 );
 

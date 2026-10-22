@@ -1,7 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import adapter from '@sveltejs/adapter-auto';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { enhancedImages } from '@sveltejs/enhanced-img';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -13,7 +12,15 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-
+			csp: {
+				directives: {
+					'script-src': ['self']
+				},
+				reportOnly: {
+					'script-src': ['self'],
+					'report-uri': ['/']
+				},
+			},
 			// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
 			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
