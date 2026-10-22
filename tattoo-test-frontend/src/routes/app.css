@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@font-face {
+	font-family: 'GT America';
+	src: url('/fonts/gt-america/gt-america-light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'GT America';
+	src: url('/fonts/gt-america/gt-america-medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GT America';
+	src: url('/fonts/gt-america/gt-america-bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GT America Mono';
+	src: url('/fonts/gt-america/gt-america-mono-medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GT America';
+	src: url('/fonts/gt-america/gt-america-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Gloock';
+	src: url('/fonts/gloock/Gloock-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GT Walsheim';
+	src: url('/fonts/gt-walsheim/GT-Walsheim-Ultra-Bold.otf') format('opentype');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Bariol';
+	src: url('/fonts/bariol/bariol_bold-webfont.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/sf-pro/SF-Pro-Display-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+html,
+body {
+    overflow-x: clip;
+}
+:root {
+    --raw-spacing-gutter-right: clamp(1.56rem, 4vw ,6.06rem);
+    --raw-spacing-gutter-left: clamp(.95rem, 4vw, 6.25rem);
+    --raw-spacing-body-top: 3.75rem;
+    --raw-spacing-body-bottom: 3.75rem;
+    --raw-spacing-body: var(--raw-spacing-body-top) 0 var(--raw-spacing-body-bottom) 0;
+    --raw-spacing-section: 0 0 clamp(1.75rem, 9vw, 9.5rem) 0;
+    --max-component-width: 107.69rem;
+}
+
+@media(min-width: 1024px) {
+    :root {
+        --raw-spacing-gutter-right: clamp(1.56rem, 3vw ,6.06rem);
+        --raw-spacing-gutter-left: clamp(.95rem, 3vw, 6.25rem);
+        --raw-spacing-body: var(--raw-spacing-body-top) 0 var(--raw-spacing-body-bottom) 0;
+    }
+}
+@theme {
+    --color-text-default: #FFF;
+    --color-text-light: #FFF;
+    --color-text-dark: #000;
+	--color-brand-1: #ffce00;
+    --font-sans: 'GT America', sans-serif;
+	--font-mono: 'GT America Mono', monospace;
+    --font-primary: var(--font-sans);
+    --font-secondary: var(--font-primary);
+
+    --text-fluid-xl: clamp(2.5rem, 11vw, 9.69rem);
+    --text-fluid-xl--line-height: .92;
+    --text-fluid-l: clamp(2.5rem, 11vw, 8rem);
+    --text-fluid-l--line-height: .92;
+    --text-fluid-xs: clamp(0.875rem, 1.5vw, 1.5rem );
+    --spacing-body: var(--raw-spacing-body);
+    --spacing-video-player-heading: 1.3em;
+    --max-width-component: calc(var(--max-component-width) + var(--raw-spacing-gutter-right) + var(--raw-spacing-gutter-left));
+    --spacing-gutter: 0 var(--raw-spacing-gutter-right) 0 var(--raw-spacing-gutter-left);
+}
+
+@layer components {
+    section {
+        margin: var(--raw-spacing-section);
+    }
+    .button--outline {
+        border-radius: 3.875rem;
+        border-width: .25rem;
+        border-color: #fff;
+        border-style: solid;
+        background-color: transparent;
+        color: #fff;
+        padding: .5rem 1rem;
+        min-width: 8.5rem;
+        min-height: 3.3125rem;
+        text-transform: uppercase;
+        line-height: .86;
+        letter-spacing: .0025em;
+
+    }
+
+    .button--outline.active {
+        background-color: var(--color-brand-1);
+        color: var(--color-text-dark);
+        border-color: var(--color-brand-1);
+    }
+}

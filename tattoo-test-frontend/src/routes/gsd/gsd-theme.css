@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+:root {
+    --raw-spacing-section: 0 0 clamp(1.6875rem, 11vw, 7.5rem) 0;
+}
+@media(min-width: 1024px) {
+    :root {
+        --raw-spacing-gutter-right: clamp(1.56rem, 6vw ,11.06rem);
+        --raw-spacing-gutter-left: clamp(.95rem, 6vw, 7.25rem);
+    }
+}
+@theme {
+    --color-text-default: #666;
+    --color-text-light: #FFF;
+    --color-text-dark: #666;
+	--color-brand-1: #102141;
+    --font-sans: 'SF Pro Display', serif;
+	--font-mono: 'SF Pro Display', monospace;
+    --font-secondary: 'Gloock', serif;
+    --font-primary: var(--font-sans);
+
+    --text-base: clamp(1rem, 3vw, 1.125rem);
+    --text-fluid-xl: clamp(2.5rem, 11vw, 9.69rem);
+    --text-fluid-xl--line-height: .92;
+    --tracking-tight: -0.01em;
+    --tracking-tightest: -0.03em;
+    --text-fluid-l: clamp(2rem, 6vw, 5rem);
+    --text-fluid-l--line-height: 1;
+    --text-fluid-xs: clamp(0.875rem, 1.5vw, 1.5rem );
+    --spacing-body: var(--raw-spacing-body);
+    --spacing-video-player-heading: 1.3em;
+    --max-component-width: 87.8125rem;
+    --max-width-component: var(--max-component-width);
+    --spacing-section: var(--raw-spacing-section);
+}

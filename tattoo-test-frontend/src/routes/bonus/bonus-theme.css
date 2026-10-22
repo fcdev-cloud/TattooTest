@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+html {
+    background-color: #000;
+}
+
+@theme {
+    --font-sans: 'Bariol', serif;
+	--font-mono: 'Bariol', monospace;
+    --font-secondary: 'GT Walsheim', serif;
+    --font-primary: var(--font-sans);
+    --text-fluid-l: clamp(3.5rem,9vw,6rem);
+    --text-base: clamp(1.2rem, 2vw, 1.5rem);
+    --text-base--line-height: 1.125;
+}
