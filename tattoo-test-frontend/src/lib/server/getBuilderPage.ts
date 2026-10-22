@@ -1,6 +1,6 @@
 import { client } from '#lib/server/graphql.ts';
 import * as v from 'valibot';
-import { BuilderItemSchema, TeamMemberNodeSchema } from '#lib/types/builder.ts';
+import { BuilderItemSchema, TeamMemberNodeSchema, type TeamMemberNode } from '#lib/types/builder.ts';
 
 const PageResponseSchema = v.object({
 	page: v.object({
@@ -12,6 +12,9 @@ const PageResponseSchema = v.object({
 			builder: v.array(BuilderItemSchema),
 		}),
 	}),
+});
+
+const TeamMembersAutoResponseSchema = v.object({
 	teamMembers: v.object({
 		nodes: v.array(TeamMemberNodeSchema),
 	}),
@@ -205,16 +208,30 @@ export async function getBuilderPage(uri: string) {
 					}
 				}
 			}
-      ${teamMemberAutoQuery}
 		}
 	`);
 
 	const data = v.parse(PageResponseSchema, raw);
 
+	const needsAutoSort = data.page.builder.builder.some(
+		(item) => item.__typename === 'BuilderBuilderTeamMemberListingLayout' && !item.manualSort
+	);
+
+	let teamMembersSortedByLastName: TeamMemberNode[] = [];
+
+	if (needsAutoSort) {
+		const autoRaw = await client.request(`
+			query GetTeamMembersSortedByLastName {
+				${teamMemberAutoQuery}
+			}
+		`);
+		teamMembersSortedByLastName = v.parse(TeamMembersAutoResponseSchema, autoRaw).teamMembers.nodes;
+	}
+
 	return {
 		pageTitle: data.page.title,
 		templateName: data.page.template.templateName,
 		builderItems: data.page.builder.builder,
-		teamMembersSortedByLastName: data.teamMembers.nodes,
+		teamMembersSortedByLastName,
 	};
 }
