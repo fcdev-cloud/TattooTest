@@ -2,9 +2,9 @@
 
 ## Backend setup
 
-1. Install a new site using [WP Engine Studio](https://wpengine.com/studio/).
+1. Install a new site using WordPress studio.
 2. Run the site.
-3. Import the database: `studio-backup-my-wordpress-website-*.sql`.
+3. Import the database included at the root of the project`.
 4. Copy the `plugins` and `themes/tattoo-test-theme` folders from `tattoo-test/wp-content/` into the new site's `wp-content/`, then activate Advanced Custom Fields PRO, WPGraphQL, and WPGraphQL for ACF in the WordPress admin.
 
 ## Frontend setup
